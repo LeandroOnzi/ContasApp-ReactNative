@@ -81,21 +81,26 @@ const App = () => {
     }
   };
 
-  // Função para salvar a conta e limpar o estado
   const salvarConta = () => {
+    console.log('Tentando salvar conta...');
+    console.log('Nome da conta:', nomeConta);
+    console.log('Valor da conta:', valorConta);
+    console.log('Pessoas:', pessoas);
+  
     if (!nomeConta || !valorConta || pessoas.length === 0) {
       Alert.alert('Erro', 'Preencha todos os campos antes de salvar.');
       return;
     }
-
+  
     const novaConta: Conta = {
       id: (contasPagas.length + 1).toString(),
       nomeConta,
       valorTotal: parseFloat(valorConta),
       pessoas,
     };
+    
     setContasPagas([...contasPagas, novaConta]);
-
+  
     // Limpar campos
     setNomeConta('');
     setValorConta('');
@@ -103,6 +108,7 @@ const App = () => {
     setPessoas([]);
     Alert.alert('Sucesso', 'Conta salva com sucesso!');
   };
+  
 
   // Função para abrir modal e ver os detalhes da conta
   const verDetalhesConta = (conta: Conta) => {
